@@ -13,7 +13,7 @@ class Window1 extends Frame implements ActionListener
         super("Window1");
         try
         {
-            img=ImageIO.read(new File("D:\\javaLAb\\resource allocator\\window.jpg"));
+            img=ImageIO.read(new File("C:\\resource allocator\\window.jpg"));
         }
         catch(Exception e){}
 
