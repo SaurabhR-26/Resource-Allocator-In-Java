@@ -3,14 +3,15 @@ import java.awt.event.*;
 import java.awt.image.*;
 import javax.imageio.*;
 import java.io.*;
-class Window1 extends Frame implements ActionListener
+class Window1 extends Dialog implements ActionListener
 {
     Button auth,user,adm,exit;
     Image img;
     Window1 parent;
-    Window1()
+    Window1(Frame prnt , String title , boolean state)
     {
-        super("Window1");
+        super(prnt , title , state);
+        
         try
         {
             img=ImageIO.read(new File("C:\\resource allocator\\window.jpg"));

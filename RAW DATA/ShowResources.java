@@ -5,7 +5,7 @@ import java.io.*;
 
 import javax.swing.Action;
 
-class ResourceBase extends Dialog implements ActionListener{
+class ShowResources extends Dialog implements ActionListener{
 
     Label window_title;
     Image img;
@@ -14,7 +14,7 @@ class ResourceBase extends Dialog implements ActionListener{
 
     Button bnext , bbook; //to submit the info
 
-    ResourceBase(Frame prnt, String title, boolean state)
+    ShowResources(Frame prnt, String title, boolean state)
     {
 
         super(prnt, title, state);
