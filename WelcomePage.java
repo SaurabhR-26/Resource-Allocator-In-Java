@@ -12,8 +12,12 @@ class Book extends Dialog implements ActionListener {
     Button book;
     Button back;
 
-    Book(Dialog parent, String title, boolean state) {
-        super(parent, title, state);
+    Dialog parent;
+
+    Book(Dialog prnt, String title, boolean state) {
+        super(prnt, title, state);
+
+        parent =prnt;
 
         lnm = new Label("Name");
         ltype = new Label("Type");
@@ -84,7 +88,8 @@ class Book extends Dialog implements ActionListener {
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
         setBackground(new Color(247, 255, 174));
@@ -105,9 +110,13 @@ class Approve extends Dialog implements ActionListener {
 
     Button bnext, bapprove; // to submit the info
 
+    Dialog parent;
+
     Approve(Dialog prnt, String title, boolean state) {
 
         super(prnt, title, state);
+
+        parent = prnt;
 
         // title
         window_title = new Label("ALLOTED RESOURCES");
@@ -183,7 +192,8 @@ class Approve extends Dialog implements ActionListener {
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -206,12 +216,14 @@ class ShowResources extends Dialog implements ActionListener {
     TextField tname, ttype, tlocation, tid, tsize, tis_approved, tdatedata;
     Button bnext, bbook; // to submit the info
     Book b;
+    Dialog parent;
 
     ShowResources(Dialog prnt, String title, boolean state) {
 
         super(prnt, title, state);
 
         // title
+        parent = prnt;
         window_title = new Label("ALLOTED RESOURCES");
         window_title.setFont(new Font("Arial", 500, 30));
 
@@ -285,7 +297,8 @@ class ShowResources extends Dialog implements ActionListener {
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -319,9 +332,13 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
 
     Button bsubmit; // to submit the info
 
+    Dialog parent;
+
     ResourceBase(Dialog prnt, String title, boolean state) {
 
         super(prnt, title, state);
+
+        parent = prnt;
 
         try {
             File fobj = new File("c:\\RESOURCE ALLOCATOR\\ResourcesImage.jfif");
@@ -392,7 +409,8 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -408,6 +426,7 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
         if (b == bsubmit) {
             // code for writing into data base
             setVisible(false);
+            parent.setVisible(true);
         }
     }
 
@@ -434,8 +453,12 @@ class AuthorityDialog extends Dialog implements ActionListener, FocusListener, I
     String username, password, name, pos, branch;
     int id;
 
-    AuthorityDialog(Dialog parent, String title, boolean state) {
-        super(parent, title, state);
+    Dialog parent;
+
+    AuthorityDialog(Dialog prnt, String title, boolean state) {
+        super(prnt, title, state);
+
+        parent = prnt;
 
         lunm = new Label("Username");
         lpass1 = new Label("Password");
@@ -508,7 +531,8 @@ class AuthorityDialog extends Dialog implements ActionListener, FocusListener, I
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -561,9 +585,13 @@ class Users extends Dialog implements ActionListener, FocusListener, WindowListe
     Panel p1, p2;
     Image img1;
 
+    Dialog parent;
+
     Users(Dialog prnt, String title, boolean state) {
 
         super(prnt, title, state);
+
+        parent=prnt;
 
         lname = new Label("Name");
         lclub = new Label("Club");
@@ -683,23 +711,24 @@ class Users extends Dialog implements ActionListener, FocusListener, WindowListe
 
     public void windowClosing(WindowEvent e) {
         // close();
-        System.exit(0);
+        setVisible(false);
+        parent.setVisible(true);
     }
 
     public void windowActivated(WindowEvent e) {
-        System.out.println("Activated");
+        
     }
 
     public void windowDeactivated(WindowEvent e) {
-        System.out.println("Deactivated");
+        
     }
 
     public void windowIconified(WindowEvent e) {
-        System.out.println("Iconified");
+    
     }
 
     public void windowDeiconified(WindowEvent e) {
-        System.out.println("Deiconified");
+        
     }
 
     public void focusLost(FocusEvent e) {
@@ -721,11 +750,15 @@ class LoginWindow extends Dialog implements ActionListener {
     ShowResources sr;
     Approve ap;
 
+    Dialog parent;
+
     LoginWindow(Dialog prnt, String title, boolean state) {
 
         super(prnt, title, state);
 
         tmp = title;
+
+        parent =prnt;
 
         try {
             File fobj = new File("c:\\Resource Allocator\\loginImageFinal.png");
@@ -763,7 +796,8 @@ class LoginWindow extends Dialog implements ActionListener {
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -803,11 +837,12 @@ class LoginWindow extends Dialog implements ActionListener {
 class LoginPage2 extends Dialog implements ActionListener {
     Button Login, Signup;
     // Image img;
-    LoginPage2 parent;
     LoginWindow lw;
     String t;
     Users u;
     AuthorityDialog ad;
+
+    Dialog parent;
 
     LoginPage2(Dialog prnt, String title, boolean state) {
 
@@ -822,7 +857,7 @@ class LoginPage2 extends Dialog implements ActionListener {
 
         t = title;
 
-        parent = this;
+        parent = prnt;
         Login = new Button("Login");
         Signup = new Button("Signup");
 
@@ -844,7 +879,8 @@ class LoginPage2 extends Dialog implements ActionListener {
 
             public void windowClosing(WindowEvent e) {
                 // commit
-                System.exit(0);
+                setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -887,9 +923,10 @@ class LoginPage2 extends Dialog implements ActionListener {
 class Window1 extends Dialog implements ActionListener {
     Button auth, user, adm, exit;
     Image img;
-    Window1 parent;
     LoginPage2 lp2;
     LoginWindow lw;
+
+    Frame parent;
 
     Window1(Frame prnt, String title, boolean state) {
         super(prnt, title, state);
@@ -899,7 +936,8 @@ class Window1 extends Dialog implements ActionListener {
         } catch (Exception e) {
         }
 
-        parent = this;
+       
+        parent =prnt;
         auth = new Button("AUTHORITY");
         user = new Button("USER");
         adm = new Button("ADMIN");
@@ -929,6 +967,7 @@ class Window1 extends Dialog implements ActionListener {
 
             public void windowClosing(WindowEvent e) {
                 setVisible(false);
+                parent.setVisible(true);
             }
         });
 
@@ -952,8 +991,8 @@ class Window1 extends Dialog implements ActionListener {
             lw = new LoginWindow(this, "ADMIN", true);
 
         if (b == exit) {
-
-            System.exit(0);
+            setVisible(false);
+            parent.setVisible(true);
         }
 
     }
