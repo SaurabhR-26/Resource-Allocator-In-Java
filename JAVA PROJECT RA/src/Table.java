@@ -24,6 +24,19 @@ public class Table {
 
         // st.executeQuery("INSERT INTO USERS VALUES('aniket' , 'aniket@123' , 'ANIKET' , 'ACSES', 47)");
 
+        // ResultSet rs = st.executeQuery("INSERT INTO RESOURCES VALUES('CLASSROOM 19', 'CLASSROOM', 'ACADEMIC COMPLEX', 19 , 100 , 'N' , 'Y', null, null , null)");
+        // st.executeQuery("INSERT INTO RESOURCES VALUES('MINI CCF', 'LAB', 'CSE DEPT', 1 , 120 , 'N' , 'Y', null, null , null)");
+        
+
+        ResultSet rs = st.executeQuery("SELECT * FROM RESOURCES");
+        if (rs !=null)
+        {
+            while(rs.next())
+            {
+                System.out.println(rs.getString("name")+"\t"+rs.getString("location")+"\t"+rs.getInt("id"));
+            }
+        }
+        
         
 
         System.out.println("Query executed");

@@ -7,6 +7,10 @@ import java.sql.Ref;
 import java.sql.*;
 import java.util.jar.Attributes.Name;
 
+/*
+ * Resources are visible now
+*/
+
 class Book extends Dialog implements ActionListener {
     Label ldate;
     TextField td, tm, ty;
@@ -32,12 +36,12 @@ class Book extends Dialog implements ActionListener {
 
         ldate.setBounds(50, 390, 100, 30);
 
-        td.setBounds(250, 190, 20, 30);
-        tm.setBounds(270, 190, 20, 30);
-        ty.setBounds(290, 190, 40, 30);
+        td.setBounds(400, 400, 30, 30);
+        tm.setBounds(450, 400, 30, 30);
+        ty.setBounds(500, 400, 50, 30);
 
-        back.setBounds(150, 260, 100, 50);
-        book.setBounds(350, 260, 100, 50);
+        back.setBounds(350, 550, 100, 50);
+        book.setBounds(550, 550, 100, 50);
 
         back.addActionListener(this);
         book.addActionListener(this);
@@ -55,7 +59,8 @@ class Book extends Dialog implements ActionListener {
             }
         });
         setBackground(new Color(247, 255, 174));
-        setSize(600, 350);
+        setSize(1000, 700);
+        setLocation(250, 50);
         setVisible(true);
     }
 
@@ -113,7 +118,7 @@ class Approve extends Dialog implements ActionListener {
 
         setLayout(null); // now layout is null so setBounds method is to be used
 
-        window_title.setBounds(80, 50, 340, 30);
+        window_title.setBounds(300, 50, 340, 30);
 
         add(window_title);
 
@@ -126,13 +131,21 @@ class Approve extends Dialog implements ActionListener {
         lis_approved = new Label("APPROVAL :");
         ldatedata = new Label("DATE :");
 
-        lname.setBounds(130, 100, 70, 30);
-        ltype.setBounds(130, 140, 70, 30);
-        llocation.setBounds(130, 180, 70, 30);
-        lid.setBounds(130, 220, 70, 30);
-        lsize.setBounds(130, 260, 70, 30);
-        lis_approved.setBounds(130, 300, 70, 30);
-        ldatedata.setBounds(130, 340, 70, 30);
+        lname.setBounds(230, 100, 120, 30);
+        ltype.setBounds(230, 140, 120, 30);
+        llocation.setBounds(230, 180, 120, 30);
+        lid.setBounds(230, 220, 120, 30);
+        lsize.setBounds(230, 260, 120, 30);
+        lis_approved.setBounds(230, 300, 120, 30);
+        ldatedata.setBounds(230, 340, 120, 30);
+
+        lname.setFont(new Font("Arial", 30, 20));
+        ltype.setFont(new Font("Arial", 30, 20));
+        llocation.setFont(new Font("Arial", 30, 20));
+        lid.setFont(new Font("Arial", 30, 20));
+        lsize.setFont(new Font("Arial", 30, 20));
+        lis_approved.setFont(new Font("Arial", 30, 20));
+        ldatedata.setFont(new Font("Arial", 30, 20));
 
         add(lname);
         add(ltype);
@@ -151,13 +164,13 @@ class Approve extends Dialog implements ActionListener {
         tis_approved = new TextField(10);
         tdatedata = new TextField(10);
 
-        tname.setBounds(210, 100, 140, 30);
-        ttype.setBounds(210, 140, 140, 30);
-        tlocation.setBounds(210, 180, 140, 30);
-        tid.setBounds(210, 220, 140, 30);
-        tsize.setBounds(210, 260, 140, 30);
-        tis_approved.setBounds(210, 300, 140, 30);
-        tdatedata.setBounds(210, 340, 140, 30);
+        tname.setBounds(380, 100, 140, 30);
+        ttype.setBounds(380, 140, 140, 30);
+        tlocation.setBounds(380, 180, 140, 30);
+        tid.setBounds(380, 220, 140, 30);
+        tsize.setBounds(380, 260, 140, 30);
+        tis_approved.setBounds(380, 300, 140, 30);
+        tdatedata.setBounds(380, 340, 140, 30);
 
         add(tname);
         add(ttype);
@@ -173,8 +186,8 @@ class Approve extends Dialog implements ActionListener {
         bnext.addActionListener(this);
         bapprove.addActionListener(this);
 
-        bnext.setBounds(100, 450, 100, 30);
-        bapprove.setBounds(300, 450, 100, 30);
+        bnext.setBounds(200, 450, 100, 30);
+        bapprove.setBounds(400, 450, 100, 30);
 
         add(bnext);
         add(bapprove);
@@ -187,7 +200,8 @@ class Approve extends Dialog implements ActionListener {
 
         setBackground(new Color(247, 255, 174));
         setVisible(false);
-        setSize(500, 600);
+        setLocation(250, 50);
+        setSize(1000, 700);
         setResizable(false);
     }
 
@@ -285,10 +299,15 @@ class ShowResources extends Dialog implements ActionListener {
     TextField tname, ttype, tlocation, tid, tsize, tis_approved, tdatedata;
     Button bnext, bbook; // to submit the info
     Book bk;
+    boolean flag;
+    int cnt;
 
     ShowResources(Dialog prnt, String title, boolean state) {
 
         super(prnt, title, state);
+
+        flag = false;
+        cnt = 0;
 
         // title
         window_title = new Label("ALLOTED RESOURCES");
@@ -296,7 +315,7 @@ class ShowResources extends Dialog implements ActionListener {
 
         setLayout(null); // now layout is null so setBounds method is to be used
 
-        window_title.setBounds(80, 50, 340, 30);
+        window_title.setBounds(280, 50, 340, 30);
 
         add(window_title);
 
@@ -309,13 +328,21 @@ class ShowResources extends Dialog implements ActionListener {
         lis_approved = new Label("APPROVAL :");
         ldatedata = new Label("DATE :");
 
-        lname.setBounds(130, 100, 70, 30);
-        ltype.setBounds(130, 140, 70, 30);
-        llocation.setBounds(130, 180, 70, 30);
-        lid.setBounds(130, 220, 70, 30);
-        lsize.setBounds(130, 260, 70, 30);
-        lis_approved.setBounds(130, 300, 70, 30);
-        ldatedata.setBounds(130, 340, 70, 30);
+        lname.setBounds(230, 150, 120, 30);
+        ltype.setBounds(230, 190, 120, 30);
+        llocation.setBounds(230, 230, 120, 30);
+        lid.setBounds(230, 270, 120, 30);
+        lsize.setBounds(230, 310, 120, 30);
+        lis_approved.setBounds(230, 350, 120, 30);
+        ldatedata.setBounds(230, 390, 120, 30);
+
+        lname.setFont(new Font("Arial", 30, 20));
+        ltype.setFont(new Font("Arial", 30, 20));
+        llocation.setFont(new Font("Arial", 30, 20));
+        lid.setFont(new Font("Arial", 30, 20));
+        lsize.setFont(new Font("Arial", 30, 20));
+        lis_approved.setFont(new Font("Arial", 30, 20));
+        ldatedata.setFont(new Font("Arial", 30, 20));
 
         add(lname);
         add(ltype);
@@ -334,13 +361,13 @@ class ShowResources extends Dialog implements ActionListener {
         tis_approved = new TextField(10);
         tdatedata = new TextField(10);
 
-        tname.setBounds(210, 100, 140, 30);
-        ttype.setBounds(210, 140, 140, 30);
-        tlocation.setBounds(210, 180, 140, 30);
-        tid.setBounds(210, 220, 140, 30);
-        tsize.setBounds(210, 260, 140, 30);
-        tis_approved.setBounds(210, 300, 140, 30);
-        tdatedata.setBounds(210, 340, 140, 30);
+        tname.setBounds(400, 150, 170, 30);
+        ttype.setBounds(400, 190, 170, 30);
+        tlocation.setBounds(400, 230, 170, 30);
+        tid.setBounds(400, 270, 170, 30);
+        tsize.setBounds(400, 310, 170, 30);
+        tis_approved.setBounds(400, 350, 170, 30);
+        tdatedata.setBounds(400, 390, 170, 30);
 
         add(tname);
         add(ttype);
@@ -356,8 +383,8 @@ class ShowResources extends Dialog implements ActionListener {
         bnext.addActionListener(this);
         bbook.addActionListener(this);
 
-        bnext.setBounds(100, 450, 100, 30);
-        bbook.setBounds(300, 450, 100, 30);
+        bnext.setBounds(300, 550, 120, 50);
+        bbook.setBounds(500, 550, 120, 50);
 
         add(bnext);
         add(bbook);
@@ -369,8 +396,9 @@ class ShowResources extends Dialog implements ActionListener {
         });
 
         setBackground(new Color(247, 255, 174));
+        setLocation(250, 50);
         setVisible(false);
-        setSize(500, 600);
+        setSize(1000, 700);
         setResizable(false);
     }
 
@@ -383,50 +411,37 @@ class ShowResources extends Dialog implements ActionListener {
         String name, type, location, is_approved;
         int id, size, y, m, d;
 
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-
-            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "saur");
-
-            st = con.createStatement();
-
-            rs = st.executeQuery("SELECT * FROM RESOURCES");
-            if (rs != null) {
-                rs.next();
-                name = rs.getString("name");
-                type = rs.getString("type");
-                location = rs.getString("location");
-                id = rs.getInt("id");
-                size = rs.getInt("size");
-                y = rs.getInt("year");
-                m = rs.getInt("month");
-                d = rs.getInt("date");
-                is_approved = rs.getString("is_approved");
-
-                tname.setText(name);
-                ttype.setText(type);
-                tlocation.setText(location);
-                tid.setText("" + id);
-                tsize.setText("" + size);
-                tdatedata.setText("" + y + "-" + m + "-" + d);
-                tis_approved.setText(is_approved);
-            }
-
-        } catch (Exception e1) {
-        }
+        System.out.println("Entered in the action mode...");
 
         if (b == bnext) {
+            cnt++;
             try {
-                rs.next();
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+
+                con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "saur");
+
+                st = con.createStatement();
+
+                rs = st.executeQuery("SELECT * FROM RESOURCES");
+
+                int var = cnt;
+                while (var != 0) {
+
+                    rs.next();
+                    var--;
+                }
+
                 name = rs.getString("name");
                 type = rs.getString("type");
                 location = rs.getString("location");
                 id = rs.getInt("id");
-                size = rs.getInt("size");
+                size = rs.getInt("size_new");
                 y = rs.getInt("year");
                 m = rs.getInt("month");
-                d = rs.getInt("date");
+                d = rs.getInt("day");
                 is_approved = rs.getString("is_approved");
+
+                System.out.println(name + "\t" + id);
 
                 tname.setText(name);
                 ttype.setText(type);
@@ -436,7 +451,9 @@ class ShowResources extends Dialog implements ActionListener {
                 tdatedata.setText("" + y + "-" + m + "-" + d);
                 tis_approved.setText(is_approved);
 
-            } catch (Exception e5) {
+            }
+
+            catch (Exception e5) {
             }
 
         }
@@ -480,7 +497,7 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
 
         setLayout(null); // now layout is null so setBounds method is to be used
 
-        window_title.setBounds(130, 50, 250, 30);
+        window_title.setBounds(370, 50, 250, 30);
 
         add(window_title);
 
@@ -491,11 +508,17 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
         lid = new Label("ID :");
         lsize = new Label("SIZE");
 
-        lname.setBounds(130, 300, 70, 30);
-        ltype.setBounds(130, 340, 70, 30);
-        llocation.setBounds(130, 380, 70, 30);
-        lid.setBounds(130, 420, 70, 30);
-        lsize.setBounds(130, 460, 70, 30);
+        lname.setBounds(300, 350, 100, 30);
+        ltype.setBounds(300, 400, 100, 30);
+        llocation.setBounds(300, 450, 100, 30);
+        lid.setBounds(300, 500, 100, 30);
+        lsize.setBounds(300, 550, 100, 30);
+
+        lname.setFont(new Font("Serief", 30, 20));
+        ltype.setFont(new Font("Serief", 30, 20));
+        llocation.setFont(new Font("Serief", 30, 20));
+        lid.setFont(new Font("Serief", 30, 20));
+        lsize.setFont(new Font("Serief", 30, 20));
 
         add(lname);
         add(ltype);
@@ -510,11 +533,11 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
         tid = new TextField(10);
         tsize = new TextField(10);
 
-        tname.setBounds(210, 300, 120, 30);
-        ttype.setBounds(210, 340, 120, 30);
-        tlocation.setBounds(210, 380, 120, 30);
-        tid.setBounds(210, 420, 120, 30);
-        tsize.setBounds(210, 460, 120, 30);
+        tname.setBounds(450, 350, 150, 30);
+        ttype.setBounds(450, 400, 150, 30);
+        tlocation.setBounds(450, 450, 150, 30);
+        tid.setBounds(450, 500, 150, 30);
+        tsize.setBounds(450, 550, 150, 30);
 
         tname.addFocusListener(this);
         ttype.addFocusListener(this);
@@ -531,7 +554,7 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
         bsubmit = new Button("ADD RESOURCE");
         bsubmit.addActionListener(this);
 
-        bsubmit.setBounds(190, 550, 120, 30);
+        bsubmit.setBounds(700, 600, 150, 50);
 
         add(bsubmit);
 
@@ -543,7 +566,8 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
 
         setBackground(new Color(247, 255, 174));
         setVisible(false);
-        setSize(500, 700);
+        setLocation(250, 50);
+        setSize(1000, 700);
         setResizable(false);
     }
 
@@ -579,7 +603,7 @@ class ResourceBase extends Dialog implements ActionListener, FocusListener {
     }
 
     public void paint(Graphics g) {
-        g.drawImage(img, 80, 120, 320, 150, this);
+        g.drawImage(img, 250, 100, 500, 220, this);
     }
 
     public void focusGained(FocusEvent f) {
@@ -606,7 +630,7 @@ class AuthorityDialog extends Dialog implements ActionListener, FocusListener, I
 
         lunm = new Label("Username");
         lpass1 = new Label("Password");
-        lpass2 = new Label("Confirm PAssword");
+        lpass2 = new Label("Confirm Password");
         lnm = new Label("Name");
         lid = new Label("ID");
         lbnm = new Label("Branch");
@@ -641,21 +665,29 @@ class AuthorityDialog extends Dialog implements ActionListener, FocusListener, I
 
         setLayout(null);
 
-        lunm.setBounds(50, 40, 150, 30);
+        lunm.setBounds(50, 40, 200, 30);
         tunm.setBounds(300, 40, 350, 50);
-        lpass1.setBounds(50, 130, 150, 30);
+        lpass1.setBounds(50, 130, 200, 30);
         tpass1.setBounds(300, 130, 350, 50);
-        lpass2.setBounds(50, 220, 150, 30);
+        lpass2.setBounds(50, 220, 200, 30);
         tpass2.setBounds(300, 220, 350, 50);
-        lnm.setBounds(50, 310, 150, 30);
+        lnm.setBounds(50, 310, 200, 30);
         tnm.setBounds(300, 310, 350, 50);
-        lid.setBounds(50, 400, 150, 30);
+        lid.setBounds(50, 400, 200, 30);
         tid.setBounds(300, 400, 350, 50);
-        lpos.setBounds(50, 490, 150, 30);
+        lpos.setBounds(50, 490, 200, 30);
         tpos.setBounds(300, 490, 350, 50);
-        lbnm.setBounds(50, 580, 150, 30);
+        lbnm.setBounds(50, 580, 200, 30);
         cbnm.setBounds(300, 580, 350, 50);
-        bb.setBounds(300, 670, 100, 50);
+        bb.setBounds(400, 630, 150, 50);
+
+        lunm.setFont(new Font("ROMAN", 40, 20));
+        lpass1.setFont(new Font("ROMAN", 40, 20));
+        lpass2.setFont(new Font("ROMAN", 40, 20));
+        lnm.setFont(new Font("ROMAN", 40, 20));
+        lid.setFont(new Font("ROMAN", 40, 20));
+        lpos.setFont(new Font("ROMAN", 40, 20));
+        lbnm.setFont(new Font("ROMAN", 40, 20));
 
         add(lunm);
         add(tunm);
@@ -680,7 +712,8 @@ class AuthorityDialog extends Dialog implements ActionListener, FocusListener, I
         });
 
         setBackground(new Color(247, 255, 174));
-        setSize(700, 760);
+        setLocation(250, 50);
+        setSize(1000, 700);
         setVisible(true);
         setResizable(false);
     }
@@ -717,30 +750,30 @@ class AuthorityDialog extends Dialog implements ActionListener, FocusListener, I
     }
 
     public void focusLost(FocusEvent e) {
-        TextField t = (TextField) e.getSource();
-        String str = "";
-        if (t == tpass1)
-            str = tpass1.getText();
-        if (t == tpass2) {
-            if (str.equals(tpass1.getText()) == false) {
-                tpass2.requestFocus();
-                return;
-            } else
-                password = tpass2.getText();
-        }
+        // TextField t = (TextField) e.getSource();
+        // String str = "";
+        // if (t == tpass1)
+        // str = tpass1.getText();
+        // if (t == tpass2) {
+        // if (str.equals(tpass1.getText()) == false) {
+        // tpass2.requestFocus();
+        // return;
+        // } else
+        // password = tpass2.getText();
+        // }
 
-        if (t == tpos) {
-            bb.setEnabled(true);
-        }
-        name = tnm.getText();
-        id = Integer.parseInt(tid.getText());
-        pos = tpos.getText();
+        // if (t == tpos) {
+        // bb.setEnabled(true);
+        // }
+        // name = tnm.getText();
+        // id = Integer.parseInt(tid.getText());
+        // pos = tpos.getText();
     }
 
     public void focusGained(FocusEvent e) {
-        TextField t = (TextField) e.getSource();
-        if (t == tunm)
-            bb.setEnabled(false);
+        // TextField t = (TextField) e.getSource();
+        // if (t == tunm)
+        // bb.setEnabled(false);
     }
 
     public void itemStateChanged(ItemEvent e) {
@@ -761,12 +794,12 @@ class Users extends Dialog implements ActionListener, FocusListener, WindowListe
 
         lname = new Label("Name");
         lclub = new Label("Club");
-        lbranch = new Label("branch");
+        lbranch = new Label("Branch");
         lprn = new Label("PRN");
-        lreq = new Label("Requirments");
+        lreq = new Label("Requirements");
         lrea = new Label("Reason");
         ldate = new Label("Date");
-        lresp = new Label("Responsible person");
+        lresp = new Label("Responsible Person");
 
         // For coloring the labels
         lname.setForeground(Color.red);
@@ -777,6 +810,15 @@ class Users extends Dialog implements ActionListener, FocusListener, WindowListe
         lrea.setForeground(Color.red);
         ldate.setForeground(Color.red);
         lresp.setForeground(Color.red);
+
+        lname.setFont(new Font("Arial", 30, 30));
+        lclub.setFont(new Font("Arial", 30, 30));
+        lbranch.setFont(new Font("Arial", 30, 30));
+        lprn.setFont(new Font("Arial", 30, 30));
+        lreq.setFont(new Font("Arial", 30, 30));
+        lrea.setFont(new Font("Arial", 30, 30));
+        ldate.setFont(new Font("Arial", 30, 30));
+        lresp.setFont(new Font("Arial", 30, 30));
 
         tnm = new TextField(20);
         tclub = new TextField(20);
@@ -798,20 +840,20 @@ class Users extends Dialog implements ActionListener, FocusListener, WindowListe
 
         p1 = new Panel();
         p1.setLayout(null);
-        lname.setBounds(50, 60, 150, 30);
-        tnm.setBounds(300, 40, 350, 50);
-        lclub.setBounds(50, 150, 150, 30);
-        tclub.setBounds(300, 130, 350, 50);
-        lbranch.setBounds(50, 240, 150, 30);
-        tbranch.setBounds(300, 220, 350, 50);
-        lrea.setBounds(50, 330, 150, 30);
-        treas.setBounds(300, 310, 350, 50);
-        ldate.setBounds(50, 420, 150, 30);
-        tdate.setBounds(300, 400, 350, 50);
-        lreq.setBounds(50, 510, 150, 30);
-        treq.setBounds(300, 490, 350, 50);
-        lprn.setBounds(50, 600, 150, 30);
-        tprn.setBounds(300, 580, 350, 50);
+        lname.setBounds(50, 60, 190, 30);
+        tnm.setBounds(340, 40, 350, 50);
+        lclub.setBounds(50, 150, 190, 30);
+        tclub.setBounds(340, 130, 350, 50);
+        lbranch.setBounds(50, 240, 190, 30);
+        tbranch.setBounds(340, 220, 350, 50);
+        lrea.setBounds(50, 330, 190, 30);
+        treas.setBounds(340, 310, 350, 50);
+        ldate.setBounds(50, 420, 190, 30);
+        tdate.setBounds(340, 400, 350, 50);
+        lreq.setBounds(50, 510, 190, 30);
+        treq.setBounds(340, 490, 350, 50);
+        lprn.setBounds(50, 600, 190, 30);
+        tprn.setBounds(340, 580, 350, 50);
 
         add(lname);
         add(tnm);
@@ -848,9 +890,11 @@ class Users extends Dialog implements ActionListener, FocusListener, WindowListe
         add(p2, BorderLayout.SOUTH);
 
         addWindowListener(this);
-        setSize(700, 700);
+        setSize(1000, 700);
+        setLocation(250, 50);
         setVisible(true);
         setResizable(false);
+        setBackground(new Color(249, 226, 175));
         p1.setBackground(Color.GRAY);
 
     }
@@ -967,19 +1011,22 @@ class LoginWindow extends Dialog implements ActionListener {
 
         setLayout(null);
 
-        luname.setBounds(200, 150, 80, 30);
-        lpass.setBounds(200, 210, 80, 30);
+        luname.setBounds(330, 220, 180, 35);
+        lpass.setBounds(330, 360, 180, 35);
 
-        tuname.setBounds(300, 150, 100, 30);
-        tpass.setBounds(300, 210, 100, 30);
+        tuname.setBounds(530, 220, 120, 35);
+        tpass.setBounds(530, 360, 120, 35);
 
-        blogin.setBounds(300, 270, 50, 30);
+        blogin.setBounds(450, 450, 120, 40);
 
         add(luname);
         add(lpass);
         add(tuname);
         add(tpass);
         add(blogin);
+
+        luname.setFont(new Font("Arial", 50, 30));
+        lpass.setFont(new Font("Arial", 50, 30));
 
         setBackground(new Color(183, 19, 117));
 
@@ -989,20 +1036,22 @@ class LoginWindow extends Dialog implements ActionListener {
             }
         });
 
-        setSize(500, 400);
+        setLocation(250, 50);
+        setSize(1000, 700);
         setVisible(true);
     }
 
     public void paint(Graphics g) {
-        g.drawImage(img, 40, 140, 150, 150, this);
+        g.drawImage(img, 80, 200, 200, 200, this);
     }
 
     public void actionPerformed(ActionEvent e) {
         Button b = (Button) e.getSource();
-        setVisible(false);
         Connection con = null;
         Statement st = null;
         ResultSet rs = null;
+
+        this.setVisible(false);
 
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -1021,21 +1070,22 @@ class LoginWindow extends Dialog implements ActionListener {
                     rb.setVisible(true);
                 }
             }
-            System.out.println("inside the login");
+
             if (tmp.equals("USER LOGIN")) {
 
-                try {
+                // try {
 
-                    rs = st.executeQuery("SELECT USERNAME , PASSWORD FROM USERS WHERE USERNAME = \'" + tuname.getText()
-                            + "\' AND PASSWORD = \'" + tpass.getText() + "\')");
-                    System.out.println("this is user login");
-                    rs.next();
-                } catch (Exception e4) {
-                }
-                if (rs != null) {
-                    sr = new ShowResources(this, "RESOURCES", true);
-                    sr.setVisible(true);
-                }
+                // rs = st.executeQuery("SELECT USERNAME , PASSWORD FROM USERS WHERE USERNAME =
+                // \'" + tuname.getText()
+                // + "\' AND PASSWORD = \'" + tpass.getText() + "\')");
+                // System.out.println("this is user login");
+                // rs.next();
+                // } catch (Exception e4) {
+                // }
+                // if (rs != null) {
+                sr = new ShowResources(this, "RESOURCES", true);
+                sr.setVisible(true);
+                // }
 
             }
 
@@ -1047,10 +1097,10 @@ class LoginWindow extends Dialog implements ActionListener {
                             + tuname.getText() + "\' AND PASSWORD = \'" + tpass.getText() + "\')");
                 } catch (Exception e5) {
                 }
-                if (rs != null) {
-                    ap = new Approve(this, "APPROVAL", true);
-                    ap.setVisible(true);
-                }
+                // if (rs != null) {
+                ap = new Approve(this, "APPROVAL", true);
+                ap.setVisible(true);
+                // }
 
             }
         }
@@ -1095,8 +1145,8 @@ class LoginPage2 extends Dialog implements ActionListener {
 
         setLayout(null);
 
-        Login.setBounds(180, 150, 120, 30);
-        Signup.setBounds(180, 200, 120, 30);
+        Login.setBounds(400, 300, 120, 50);
+        Signup.setBounds(400, 400, 120, 50);
 
         add(Login);
         add(Signup);
@@ -1107,19 +1157,14 @@ class LoginPage2 extends Dialog implements ActionListener {
             }
 
             public void windowClosing(WindowEvent e) {
-                // commit
-                System.exit(0);
             }
         });
 
-        setSize(500, 400);
+        setLocation(250, 50);
+        setSize(1000, 700);
         setResizable(false);
         setVisible(true);
     }
-
-    // public void paint(Graphics g) {
-    // g.drawImage(img, 0, 0, 500, 500, this);
-    // }
 
     public void actionPerformed(ActionEvent e) {
         Button b = (Button) e.getSource();
@@ -1150,18 +1195,12 @@ class LoginPage2 extends Dialog implements ActionListener {
 
 class Window1 extends Dialog implements ActionListener {
     Button auth, user, adm, exit;
-    Image img;
     Window1 parent;
     LoginPage2 lp2;
     LoginWindow lw;
 
     Window1(Frame prnt, String title, boolean state) {
         super(prnt, title, state);
-
-        try {
-            img = ImageIO.read(new File("C:\\resource allocator\\window.jpg"));
-        } catch (Exception e) {
-        }
 
         parent = this;
         auth = new Button("AUTHORITY");
@@ -1176,10 +1215,10 @@ class Window1 extends Dialog implements ActionListener {
 
         setLayout(null);
 
-        auth.setBounds(100, 200, 100, 30);
-        user.setBounds(300, 200, 100, 30);
-        adm.setBounds(100, 300, 100, 30);
-        exit.setBounds(300, 300, 100, 30);
+        auth.setBounds(275, 200, 150, 50);
+        user.setBounds(575, 200, 150, 50);
+        adm.setBounds(275, 400, 150, 50);
+        exit.setBounds(575, 400, 150, 50);
 
         add(auth);
         add(user);
@@ -1196,24 +1235,30 @@ class Window1 extends Dialog implements ActionListener {
             }
         });
 
-        setSize(500, 500);
+        setLocation(250, 50);
+        setBackground(new Color(255, 225, 148));
+        setSize(1000, 700);
         setResizable(false);
         setVisible(false);
     }
 
-    public void paint(Graphics g) {
-        g.drawImage(img, 0, 0, 500, 500, this);
-    }
-
     public void actionPerformed(ActionEvent e) {
         Button b = (Button) e.getSource();
+
         this.setVisible(false);
-        if (b == auth)
+
+        if (b == auth) {
             lp2 = new LoginPage2(this, "AUTHORITY", true);
-        if (b == user)
+            lp2.setVisible(true);
+        }
+        if (b == user) {
             lp2 = new LoginPage2(this, "USER", true);
-        if (b == adm)
+            lp2.setVisible(true);
+        }
+
+        if (b == adm) {
             lw = new LoginWindow(this, "ADMIN", true);
+        }
 
         if (b == exit) {
 
@@ -1261,6 +1306,7 @@ public class WelcomePage extends Frame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         w1 = new Window1(ref, "WHO YOU ARE", true); // creating first dialog object
         this.setVisible(false);
+        w1.setLocation(250, 50);
         w1.setVisible(true);
     }
 
@@ -1270,5 +1316,6 @@ public class WelcomePage extends Frame implements ActionListener {
 
     public static void main(String args[]) {
         WelcomePage wp = new WelcomePage();
+        wp.setLocation(250, 50);
     }
 }
